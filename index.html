@@ -3,174 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PequeOS | The Lightweight Revolution</title>
+    <title>PequeOS | Lightweight OS</title>
     <style>
         :root {
-            --bg: #0b0f1a;
-            --card-bg: rgba(30, 41, 59, 0.7);
-            --accent-blue: #3b82f6;
-            --accent-cyan: #22d3ee;
-            --text: #ffffff;
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --cyan: #22d3ee;
+            --magenta: #d946ef;
+            --text: #f8fafc;
         }
 
         body {
             background-color: var(--bg);
             color: var(--text);
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Background grid effect */
-            background-image: 
-                linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
-            background-size: 40px 40px;
+            background-image: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
             min-height: 100vh;
         }
 
         header {
             text-align: center;
-            padding: 80px 20px 40px 20px;
+            padding: 50px 20px;
         }
 
         .logo {
-            width: 150px; /* Bigger logo to show off that design! */
-            filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.5));
-            transition: transform 0.5s ease;
-        }
-
-        .logo:hover {
-            transform: scale(1.05) rotate(5deg);
+            width: 80px;
+            margin-bottom: 10px;
         }
 
         h1 {
-            font-size: 4rem;
-            margin: 20px 0 0 0;
-            background: linear-gradient(to right, #fff, var(--accent-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 800;
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: 2px;
         }
 
         .subtitle {
             color: #94a3b8;
             font-size: 1.2rem;
-            max-width: 600px;
-            margin: 15px auto;
-            line-height: 1.6;
+            margin-top: 10px;
         }
 
         .container {
             display: flex;
             gap: 30px;
-            margin-top: 50px;
+            margin-top: 40px;
             flex-wrap: wrap;
             justify-content: center;
-            padding: 0 20px;
         }
 
         .card {
             background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 28px;
+            border-radius: 20px;
             padding: 40px;
             width: 300px;
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .card:hover {
-            transform: translateY(-15px);
-            border-color: var(--accent-blue);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(59, 130, 246, 0.2);
+            transform: translateY(-10px);
         }
 
-        .icon-circle {
-            width: 70px;
-            height: 70px;
-            background: rgba(59, 130, 246, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px auto;
-            font-size: 30px;
+        .card.cyan { border: 2px solid var(--cyan); box-shadow: 0 0 20px rgba(34, 211, 238, 0.2); }
+        .card.magenta { border: 2px solid var(--magenta); box-shadow: 0 0 20px rgba(217, 70, 239, 0.2); }
+
+        .icon {
+            font-size: 50px;
+            margin-bottom: 20px;
         }
 
-        h2 { font-size: 1.5rem; margin-bottom: 10px; }
-        
-        .spec-label {
-            font-size: 0.8rem;
-            color: var(--accent-cyan);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: bold;
-            display: block;
-            margin-bottom: 15px;
-        }
+        h2 { margin: 10px 0; font-size: 1.5rem; }
+        p { color: #94a3b8; font-size: 0.9rem; line-height: 1.5; }
 
-        .coming-soon-btn {
+        .btn {
             display: inline-block;
-            width: 100%;
-            padding: 15px;
-            background: #334155;
-            color: #94a3b8;
+            margin-top: 25px;
+            padding: 12px 30px;
+            border-radius: 10px;
             text-decoration: none;
-            border-radius: 14px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            cursor: not-allowed;
-            border: 1px solid rgba(255,255,255,0.05);
+            font-weight: bold;
             transition: 0.3s;
         }
 
-        .card:hover .coming-soon-btn {
-            background: #475569;
-            color: #fff;
-        }
+        .btn-cyan { background: var(--cyan); color: #000; }
+        .btn-cyan:hover { background: #fff; box-shadow: 0 0 20px var(--cyan); }
 
-        .mission-box {
-            margin-top: 100px;
-            padding: 40px;
+        .btn-magenta { background: var(--magenta); color: #fff; }
+        .btn-magenta:hover { background: #fff; color: #000; box-shadow: 0 0 20px var(--magenta); }
+
+        .mission {
             max-width: 800px;
             text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 60px;
+            padding: 40px;
+            border-top: 1px solid #334155;
         }
-
-        .mission-box h3 { color: var(--accent-blue); margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
     <header>
-        <img src="logo.png" alt="PequeOS Logo" class="logo">
-        <h1>PequeOS</h1>
-        <p class="subtitle">A lightweight Chromium-based OS optimized for Intel Atom and legacy hardware.</p>
+        <img src="https://img.icons8.com/fluency/96/penguin.png" alt="Logo" class="logo">
+        <h1>Project PequeOS</h1>
+        <p class="subtitle">Building a Lightweight OS for Everyone.</p>
     </header>
 
     <div class="container">
-        <div class="card">
-            <div class="icon-circle">📟</div>
-            <span class="spec-label">Legacy Hardware</span>
+        <div class="card cyan">
+            <div class="icon">📟</div>
             <h2>Download 32-bit</h2>
-            <p style="color: #94a3b8;">Perfect for Intel Atom / Low-end CPUs with 1GB RAM.</p>
-            <div class="coming-soon-btn">Coming Soon</div>
+            <p>For Intel Atom / Low-end CPUs<br>Target: 1GB RAM Devices</p>
+            <a href="#" class="btn btn-cyan">Download</a>
         </div>
 
-        <div class="card">
-            <div class="icon-circle">💻</div>
-            <span class="spec-label">Modern Standard</span>
+        <div class="card magenta">
+            <div class="icon">💻</div>
             <h2>Download 64-bit</h2>
-            <p style="color: #94a3b8;">Optimized for modern 64-bit CPUs with 4GB+ RAM.</p>
-            <div class="coming-soon-btn">Coming Soon</div>
+            <p>For Modern AMD/Intel CPUs<br>Target: 1GB+ RAM Devices</p>
+            <a href="#" class="btn btn-magenta">Download</a>
         </div>
     </div>
 
-    <div class="mission-box">
+    <div class="mission">
         <h3>Our Mission</h3>
-        <p>PequeOS is a community driven project dedicated to reviving older hardware. We believe that everyone deserves a fast, secure, and modern computing experience, regardless of their specs.</p>
+        <p>PequeOS is a community-driven project dedicated to reviving older hardware. We believe that everyone deserves a fast, secure, and modern computing experience, regardless of their specs.</p>
     </div>
 
 </body>
