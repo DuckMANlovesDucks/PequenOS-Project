@@ -7,7 +7,7 @@
     <style>
         :root {
             --bg: #0b0f1a;
-            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-bg: rgba(30, 41, 59, 0.6);
             --accent-blue: #3b82f6;
             --accent-cyan: #22d3ee;
             --text: #ffffff;
@@ -16,55 +16,54 @@
         body {
             background-color: var(--bg);
             color: var(--text);
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Background grid effect */
+            /* Grid Background */
             background-image: 
-                linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
-            background-size: 40px 40px;
+                linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         header {
             text-align: center;
-            padding: 80px 20px 40px 20px;
+            padding: 50px 20px 20px 20px;
+        }
+
+        .logo-container {
+            margin-bottom: 10px;
         }
 
         .logo {
-            width: 150px; /* Bigger logo to show off that design! */
-            filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.5));
-            transition: transform 0.5s ease;
-        }
-
-        .logo:hover {
-            transform: scale(1.05) rotate(5deg);
+            width: 180px; /* Large, clear logo */
+            height: auto;
+            filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.4));
         }
 
         h1 {
-            font-size: 4rem;
-            margin: 20px 0 0 0;
-            background: linear-gradient(to right, #fff, var(--accent-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 4.5rem;
+            margin: 10px 0;
             font-weight: 800;
+            letter-spacing: -2px;
         }
 
         .subtitle {
             color: #94a3b8;
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 15px auto;
-            line-height: 1.6;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.5;
         }
 
         .container {
             display: flex;
-            gap: 30px;
-            margin-top: 50px;
+            gap: 25px;
+            margin: 40px 0;
             flex-wrap: wrap;
             justify-content: center;
             padding: 0 20px;
@@ -72,106 +71,115 @@
 
         .card {
             background: var(--card-bg);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 28px;
-            padding: 40px;
+            border-radius: 24px;
+            padding: 35px;
             width: 300px;
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s ease;
         }
 
         .card:hover {
-            transform: translateY(-15px);
+            transform: translateY(-10px);
             border-color: var(--accent-blue);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(59, 130, 246, 0.2);
+            background: rgba(30, 41, 59, 0.9);
         }
 
-        .icon-circle {
-            width: 70px;
-            height: 70px;
-            background: rgba(59, 130, 246, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px auto;
-            font-size: 30px;
-        }
-
-        h2 { font-size: 1.5rem; margin-bottom: 10px; }
+        .icon { font-size: 40px; margin-bottom: 15px; display: block; }
         
-        .spec-label {
-            font-size: 0.8rem;
+        .tag {
             color: var(--accent-cyan);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 0.75rem;
             font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
             display: block;
+        }
+
+        h2 { font-size: 1.6rem; margin: 10px 0; }
+        
+        .card p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            margin-bottom: 25px;
+        }
+
+        .btn-locked {
+            display: block;
+            background: rgba(255,255,255,0.05);
+            color: rgba(255,255,255,0.3);
+            padding: 15px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 1px solid rgba(255,255,255,0.1);
+            cursor: not-allowed;
+        }
+
+        .card:hover .btn-locked {
+            color: #fff;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .footer-mission {
+            width: 100%;
+            max-width: 900px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: auto; /* Pushes to bottom */
+        }
+
+        .footer-mission h3 {
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
             margin-bottom: 15px;
         }
 
-        .coming-soon-btn {
-            display: inline-block;
-            width: 100%;
-            padding: 15px;
-            background: #334155;
-            color: #94a3b8;
-            text-decoration: none;
-            border-radius: 14px;
-            font-weight: 700;
+        .footer-mission p {
+            color: #64748b;
             font-size: 0.9rem;
-            cursor: not-allowed;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: 0.3s;
+            line-height: 1.6;
         }
-
-        .card:hover .coming-soon-btn {
-            background: #475569;
-            color: #fff;
-        }
-
-        .mission-box {
-            margin-top: 100px;
-            padding: 40px;
-            max-width: 800px;
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .mission-box h3 { color: var(--accent-blue); margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
     <header>
-        <img src="logo.png" alt="PequeOS Logo" class="logo">
+        <div class="logo-container">
+            <img src="logo.png" alt="PequeOS Logo" class="logo">
+        </div>
         <h1>PequeOS</h1>
         <p class="subtitle">A lightweight Chromium-based OS optimized for Intel Atom and legacy hardware.</p>
     </header>
 
     <div class="container">
         <div class="card">
-            <div class="icon-circle">📟</div>
-            <span class="spec-label">Legacy Hardware</span>
+            <span class="icon">📟</span>
+            <span class="tag">Legacy Hardware</span>
             <h2>Download 32-bit</h2>
-            <p style="color: #94a3b8;">Perfect for Intel Atom / Low-end CPUs with 1GB RAM.</p>
-            <div class="coming-soon-btn">Coming Soon</div>
+            <p>Perfect for Intel Atom / Low-end CPUs with 1GB RAM.</p>
+            <div class="btn-locked">Coming Soon</div>
         </div>
 
         <div class="card">
-            <div class="icon-circle">💻</div>
-            <span class="spec-label">Modern Standard</span>
+            <span class="icon">💻</span>
+            <span class="tag">Modern Standard</span>
             <h2>Download 64-bit</h2>
-            <p style="color: #94a3b8;">Optimized for modern 64-bit CPUs with 4GB+ RAM.</p>
-            <div class="coming-soon-btn">Coming Soon</div>
+            <p>Optimized for modern 64-bit CPUs with 4GB+ RAM.</p>
+            <div class="btn-locked">Coming Soon</div>
         </div>
     </div>
 
-    <div class="mission-box">
+    <footer class="footer-mission">
         <h3>Our Mission</h3>
-        <p>PequeOS is a community driven project dedicated to reviving older hardware. We believe that everyone deserves a fast, secure, and modern computing experience, regardless of their specs.</p>
-    </div>
+        <p>PequeOS is a community-driven project dedicated to reviving older hardware. We believe that everyone deserves a fast, secure, and modern computing experience, regardless of their specs.</p>
+    </footer>
 
 </body>
 </html>
