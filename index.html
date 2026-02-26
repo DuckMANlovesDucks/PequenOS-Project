@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PequeOS | Lightweight OS</title>
+
     <style>
         :root {
             --bg: #0f172a;
@@ -11,44 +12,50 @@
             --cyan: #22d3ee;
             --magenta: #d946ef;
             --text: #f8fafc;
+            --muted: #94a3b8;
         }
 
         body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Segoe UI', sans-serif;
             margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
+            color: var(--text);
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-image: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
             min-height: 100vh;
-            padding-bottom: 50px;
+            padding-bottom: 60px;
         }
 
         header {
             text-align: center;
-            padding: 60px 20px;
+            padding: 70px 20px 40px;
         }
 
         .logo {
-            width: 100px;
-            height: auto;
-            filter: drop-shadow(0 0 15px var(--cyan));
-            margin-bottom: 20px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        
+            width: 110px;
+            filter: drop-shadow(0 0 18px var(--cyan));
+            margin-bottom: 25px;
         }
 
-        h1 { font-size: 3.5rem; margin: 0; letter-spacing: -1px; }
-        .subtitle { color: #94a3b8; font-size: 1.2rem; margin-top: 10px; font-weight: 300; }
+        h1 {
+            font-size: 3.8rem;
+            margin: 0;
+            letter-spacing: -1px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--muted);
+            margin-top: 12px;
+            font-weight: 300;
+        }
 
         .container {
             display: flex;
-            gap: 25px;
-            margin-top: 30px;
+            gap: 30px;
+            margin-top: 40px;
             flex-wrap: wrap;
             justify-content: center;
         }
@@ -56,48 +63,91 @@
         .card {
             background: var(--card-bg);
             border-radius: 24px;
-            padding: 40px;
-            width: 280px;
+            padding: 45px 35px;
+            width: 290px;
             text-align: center;
-            transition: 0.3s;
             border: 1px solid #334155;
+            transition: 0.3s ease;
         }
 
-        .card:hover { transform: translateY(-8px); border-color: #475569; }
-        .card.cyan:hover { box-shadow: 0 0 30px rgba(34, 211, 238, 0.15); border-color: var(--cyan); }
-        .card.magenta:hover { box-shadow: 0 0 30px rgba(217, 70, 239, 0.15); border-color: var(--magenta); }
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: #475569;
+        }
 
-        .icon-box { font-size: 45px; margin-bottom: 15px; }
+        .card.cyan:hover {
+            box-shadow: 0 0 35px rgba(34, 211, 238, 0.18);
+            border-color: var(--cyan);
+        }
+
+        .card.magenta:hover {
+            box-shadow: 0 0 35px rgba(217, 70, 239, 0.18);
+            border-color: var(--magenta);
+        }
+
+        .icon-box {
+            font-size: 48px;
+            margin-bottom: 18px;
+        }
+
+        h2 {
+            margin: 10px 0 8px;
+            font-size: 1.6rem;
+        }
+
+        p {
+            color: var(--muted);
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
 
         .btn {
             display: block;
-            margin-top: 25px;
+            margin-top: 28px;
             padding: 14px;
             border-radius: 12px;
             text-decoration: none;
             font-weight: bold;
             text-transform: uppercase;
             font-size: 0.85rem;
-            transition: 0.3s;
+            transition: 0.25s;
         }
 
-        .btn-cyan { background: var(--cyan); color: #083344; }
-        .btn-magenta { background: var(--magenta); color: #fff; }
+        .btn-cyan {
+            background: var(--cyan);
+            color: #083344;
+        }
+
+        .btn-magenta {
+            background: var(--magenta);
+            color: #fff;
+        }
+
+        .btn:hover {
+            opacity: 0.85;
+            transform: scale(1.03);
+        }
 
         .mission {
-            max-width: 700px;
-            margin-top: 80px;
+            max-width: 750px;
+            margin-top: 90px;
             text-align: center;
-            padding: 30px;
+            padding: 40px 25px;
             border-top: 1px solid #334155;
-            color: #94a3b8;
+            color: var(--muted);
+        }
+
+        .mission h3 {
+            margin-bottom: 12px;
+            font-size: 1.6rem;
         }
     </style>
 </head>
+
 <body>
 
     <header>
-        <img src="https://raw.githubusercontent.com/DuckMANlovesDucks/PequeOS-Project/refs/heads/main/logo.png" alt="PequeOS" class="logo">
+        <img src="https://raw.githubusercontent.com/DuckMANlovesDucks/PequeOS-Project/refs/heads/main/logo.png" alt="PequeOS Logo" class="logo">
         <h1>Project PequeOS</h1>
         <p class="subtitle">Building a Lightweight OS for Everyone.</p>
     </header>
@@ -120,11 +170,8 @@
 
     <div class="mission">
         <h3>Our Mission</h3>
-        <p>PequeOS is a community driven project dedicated to reviving older hardware. We believe that everyone deserves a fast, secure, and modern computing experience, regardless of their specs.</p>
+        <p>PequeOS is a community-driven project dedicated to reviving older hardware. We believe that everyone deserves a fast, secure, and modern computing experience, regardless of their specs.</p>
     </div>
+
 </body>
 </html>
-
-
-
-
